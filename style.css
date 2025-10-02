@@ -1,0 +1,23 @@
+/* Bouton de mise en avant */
+.highlight-btn {
+    float: right;
+    background: #d9d872;
+    color: #254e70;
+    border: none;
+    padding: 7px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background 0.2s;
+}
+.highlight-btn:hover {
+    background: #ffe65c;
+    color: #1e3957;
+}
+
+/* Apparence spéciale pour les matchs mis en avant */
+#match-list li.highlighted {
+    background: #fffbe3;
+    border: 2px solid #d9d872;
+}
