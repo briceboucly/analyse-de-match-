@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Matchs Récents - Analyse Tactique Football</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f7f7f7;
+            color: #222;
+        }
+        header {
+            padding-bottom: 0;
+            background: #254e70;
+            color: #fff;
+        }
+        .presentation {
+            display: flex;
+            align-items: center;
+            background: #254e70;
+            border-bottom: 2px solid #d9d872;
+        }
+        .banner-img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin: 16px 24px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        }
+        .banner-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-width: 0;
+        }
+        .banner-text h1 {
+            margin: 0;
+            font-size: 2.2em;
+            color: #fff;
+        }
+        .banner-text p {
+            margin: 8px 0 0 0;
+            font-size: 1.1em;
+            color: #e2e2e2;
+        }
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 0 0;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            background: #254e70;
+        }
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s;
+            padding: 10px 0;
+            display: inline-block;
+        }
+        header nav ul li a:hover {
+            color: #d9d872;
+        }
+        main {
+            max-width: 900px;
+            margin: 30px auto;
+            background: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+        h1, h2 {
+            color: #254e70;
+        }
+        #match-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 0;
+        }
+        #match-list li {
+            list-style: none;
+            background: #eaf0fa;
+            border-radius: 5px;
+            padding: 12px;
+            cursor: pointer;
+            border: 1px solid #c2d0e8;
+            transition: background 0.2s;
+            position: relative;
+        }
+        #match-list li:hover {
+            background: #d9e8fc;
+        }
+        /* Bouton de mise en avant */
+        .highlight-btn {
+            float: right;
+            background: #d9d872;
+            color: #254e70;
+            border: none;
+            padding: 7px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background 0.2s;
+        }
+        .highlight-btn:hover {
+            background: #ffe65c;
+            color: #1e3957;
+        }
+        /* Apparence spéciale pour les matchs mis en avant */
+        #match-list li.highlighted {
+            background: #fffbe3;
+            border: 2px solid #d9d872;
+        }
+        footer {
+            text-align: center;
+            padding: 16px 0;
+            background: #254e70;
+            color: #fff;
+            margin-top: 30px;
+            border-top: 2px solid #d9d872;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="presentation">
+            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=cover&w=1200&q=80" alt="Match de football" class="banner-img">
+            <div class="banner-text">
+                <h1>Matchs Récents</h1>
+                <p>Consultez la liste des derniers matchs analysés avec leurs scores.</p>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="matchs.html">Matchs Récents</a></li>
+                <li><a href="analyse.html">Analyse Tactique</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <ul id="match-list">
+                <!-- Liste des matchs générée par JS -->
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Analyse Tactique Football</p>
+    </footer>
+    <script>
+        // Liste de matchs fictifs avec analyses tactiques
+        const matchs = [
+            {
+                id: 1,
+                equipeA: "Paris SG",
+                equipeB: "Olympique Lyonnais",
+                score: "2-1",
+                analyse: `
+                    <strong>Système :</strong> 4-3-3 pour Paris, 4-2-3-1 pour Lyon.<br>
+                    <strong>Points clés :</strong>
+                    <ul>
+                        <li>Pressing haut du PSG, récupération rapide.</li>
+                        <li>Transitions rapides avec Mbappé sur le côté gauche.</li>
+                        <li>Lyon a tenté d'exploiter les ailes mais s'est heurté au bloc défensif parisien.</li>
+                    </ul>
+                `
+            },
+            {
+                id: 2,
+                equipeA: "Real Madrid",
+                equipeB: "FC Barcelone",
+                score: "0-0",
+                analyse: `
+                    <strong>Système :</strong> 4-4-2 losange contre 4-3-3.<br>
+                    <strong>Points clés :</strong>
+                    <ul>
+                        <li>Bloc médian du Real, empêchant Barcelone de combiner dans l'axe.</li>
+                        <li>Beaucoup de duels au milieu, peu d'occasions franches.</li>
+                        <li>Barcelone a cherché la largeur sans succès face à une défense regroupée.</li>
+                    </ul>
+                `
+            },
+            {
+                id: 3,
+                equipeA: "Manchester City",
+                equipeB: "Liverpool",
+                score: "3-2",
+                analyse: `
+                    <strong>Système :</strong> 3-2-4-1 pour City, 4-3-3 pour Liverpool.<br>
+                    <strong>Points clés :</strong>
+                    <ul>
+                        <li>City domine la possession, construit bas avec Stones en sentinelle.</li>
+                        <li>Liverpool dangereux en contre, utilisant la vitesse de Salah.</li>
+                        <li>Match très ouvert, beaucoup de changements de rythme.</li>
+                    </ul>
+                `
+            }
+        ];
+
+        // Gestion de la mise en avant (stockée côté navigateur)
+        let favoris = JSON.parse(localStorage.getItem('matchsFavoris') || '[]');
+
+        const matchList = document.getElementById('match-list');
+        matchList.innerHTML = '';
+
+        matchs.forEach(match => {
+            const li = document.createElement('li');
+            li.innerHTML = `<strong>${match.equipeA}</strong> ${match.score} <strong>${match.equipeB}</strong>`;
+
+            // Bouton "Mettre en avant"
+            const btn = document.createElement('button');
+            btn.className = 'highlight-btn';
+            btn.textContent = favoris.includes(match.id) ? 'Retirer de la mise en avant' : 'Mettre en avant';
+            if (favoris.includes(match.id)) {
+                li.classList.add('highlighted');
+            }
+
+            btn.onclick = (e) => {
+                e.stopPropagation();
+                if (!favoris.includes(match.id)) {
+                    favoris.push(match.id);
+                    li.classList.add('highlighted');
+                    btn.textContent = 'Retirer de la mise en avant';
+                } else {
+                    favoris = favoris.filter(favId => favId !== match.id);
+                    li.classList.remove('highlighted');
+                    btn.textContent = 'Mettre en avant';
+                }
+                localStorage.setItem('matchsFavoris', JSON.stringify(favoris));
+            };
+
+            li.appendChild(btn);
+
+            // Navigation vers l’analyse
+            li.addEventListener('click', () => {
+                localStorage.setItem('analyseMatch', JSON.stringify(match));
+                window.location.href = 'analyse.html';
+            });
+
+            matchList.appendChild(li);
+        });
+    </script>
+</body>
+</html>
