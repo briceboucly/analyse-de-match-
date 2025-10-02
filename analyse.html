@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Analyse Tactique - Analyse Tactique Football</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f7f7f7;
+            color: #222;
+        }
+        header {
+            padding-bottom: 0;
+            background: #254e70;
+            color: #fff;
+        }
+        .presentation {
+            display: flex;
+            align-items: center;
+            background: #254e70;
+            border-bottom: 2px solid #d9d872;
+        }
+        .banner-img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin: 16px 24px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        }
+        .banner-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-width: 0;
+        }
+        .banner-text h1 {
+            margin: 0;
+            font-size: 2.2em;
+            color: #fff;
+        }
+        .banner-text p {
+            margin: 8px 0 0 0;
+            font-size: 1.1em;
+            color: #e2e2e2;
+        }
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 0 0;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            background: #254e70;
+        }
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s;
+            padding: 10px 0;
+            display: inline-block;
+        }
+        header nav ul li a:hover {
+            color: #d9d872;
+        }
+        main {
+            max-width: 900px;
+            margin: 30px auto;
+            background: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+        h1, h2 {
+            color: #254e70;
+        }
+        #analyse-content {
+            margin-top: 18px;
+            background: #f4f4f9;
+            border-left: 4px solid #254e70;
+            padding: 18px;
+            border-radius: 4px;
+            min-height: 120px;
+        }
+        .btn {
+            display: inline-block;
+            background: #254e70;
+            color: #fff;
+            padding: 10px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 18px 0 0 0;
+            transition: background 0.2s;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background: #d9d872;
+            color: #254e70;
+        }
+        footer {
+            text-align: center;
+            padding: 16px 0;
+            background: #254e70;
+            color: #fff;
+            margin-top: 30px;
+            border-top: 2px solid #d9d872;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="presentation">
+            <img src="https://images.unsplash.com/photo-1505843274393-181f84f6398e?auto=format&fit=cover&w=1200&q=80" alt="Analyse tactique" class="banner-img">
+            <div class="banner-text">
+                <h1>Analyse Tactique</h1>
+                <p>Plongez dans le détail des stratégies et des systèmes de jeu observés lors des matchs.</p>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="matchs.html">Matchs Récents</a></li>
+                <li><a href="analyse.html">Analyse Tactique</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="analyse">
+            <h2>Analyse du match</h2>
+            <div id="analyse-content">
+                <p>Aucune analyse sélectionnée.<br>
+                Retournez à la page <a href="matchs.html">Matchs Récents</a> et sélectionnez un match.</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Analyse Tactique Football</p>
+    </footer>
+    <script>
+        // Récupère l'analyse sélectionnée via localStorage
+        const analyseContent = document.getElementById('analyse-content');
+        const match = localStorage.getItem('analyseMatch');
+
+        if (match) {
+            const matchData = JSON.parse(match);
+            analyseContent.innerHTML = `
+                <h3>${matchData.equipeA} ${matchData.score} ${matchData.equipeB}</h3>
+                ${matchData.analyse}
+            `;
+            // Option pour effacer l'analyse et revenir à la liste
+            const btn = document.createElement('a');
+            btn.href = 'matchs.html';
+            btn.textContent = '← Retour à la liste des matchs';
+            btn.className = 'btn';
+            btn.style.marginTop = '18px';
+            analyseContent.appendChild(btn);
+            // Efface l'info pour éviter de la réafficher au prochain chargement
+            localStorage.removeItem('analyseMatch');
+        }
+    </script>
+</body>
+</html>
